@@ -72,7 +72,7 @@
 
 \begin{document}
 
-\title{Analisis de personas Indiginas que llegaron a UCI}
+\title{Analisis de personas Indigenas que llegaron a UCI}
 
 \author{Fredy A. Huanca T.\thanks{Universidad Nacional San Agustín de Arequipa, fhuancat@unsa.edu.pe},
 		Jose E. Perez M.\thanks{Universidad Nacional San Agustín de Arequipa, jperezma@unsa.edu.pe} y
@@ -82,35 +82,34 @@
 
 %
 \begin{abstract}
-In this scientific article, we will focus on the analysis of Covid-19 data in Mexico, using techniques such as K-means, autoencoder, and PCA for dimensionality reduction and the search for different types of patterns.
-The combination of advanced data analysis techniques will allow us to explore the complexity of this data, identify underlying patterns and obtain valuable information for decision making.
-
-By gaining a deeper insight into the Covid-19 data in Mexico, we will be able to better understand the factors that contribute to the spread of the disease, the effectiveness of control measures, and the disparities in the impact of different population groups.
+The objective of this article is to analyze the data of cases associated with COVID-19 in Mexico by applying segmentation techniques such as K-means, autoencoder and PCA, comparing them to search for demographic patterns in patients diagnosed with COVID-19.
+The combination of advanced data analysis techniques will allow us to explore the complexity of the data, identify underlying patterns and obtain valuable information for decision making.
+Also, by gaining a deeper insight into the COVID-19 data, we will be able to better understand the factors that contributed to the spread of the disease, the effectiveness of control measures, and the disparities across different population groups (indigenous and non-indigenous). natives).
 In conclusion, this scientific article focuses on the analysis of information on Covid-19 in Mexico using techniques such as K-means, autoencoder and PCA.
 \end{abstract}
 
 \begin{keywords}
-Covid-19, Mexico, Analysis of data, patterns, dimensionality reduction, PCA.
+COVID-19, Mexico, analysis of data, segmentation, patterns, dimensionality reduction, PCA.
 \end{keywords}
 
 \section{Introducción}
 
 El Covid-19, causado por el virus SARS-CoV-2, ha generado una crisis sanitaria global sin precedentes. Desde su aparición en diciembre de 2019, la enfermedad se ha propagado rápidamente en todo el mundo, afectando a millones de personas y causando un impacto significativo en la salud pública, la economía y la sociedad en general. México no ha sido ajeno a esta situación, enfrentando desafíos importantes en la contención y control del virus.
 
-En este contexto, el análisis de la información relacionada con el Covid-19 se ha convertido en una herramienta esencial para comprender la evolución de la enfermedad, identificar patrones y tomar decisiones informadas para su gestión y mitigación. En este artículo científico, nos enfocaremos en el análisis de datos del Covid-19 en México, utilizando técnicas como K-means, autoencoder y PCA para la reducción de dimensionalidad y la búsqueda de distintos tipos de patrones.
+En este contexto, el análisis de la información relacionada con el COVID-19 se ha convertido en una herramienta esencial para comprender la evolución de la enfermedad, identificar patrones y tomar decisiones informadas para su gestión y mitigación. En este artículo científico, nos enfocaremos en el análisis de datos del COVID-19 en México, utilizando técnicas como K-means, autoencoder y PCA para la reducción de dimensionalidad y la búsqueda de distintos tipos de patrones.
 
-El objetivo principal de este estudio es contribuir al conocimiento científico existente sobre el Covid-19 en México, a través del análisis de una amplia gama de variables relacionadas con la enfermedad. Estas variables pueden incluir datos demográficos, tasas de infección, hospitalizaciones, mortalidad, distribución geográfica de los casos, medidas de control implementadas y otros factores relevantes. La combinación de técnicas avanzadas de análisis de datos nos permitirá explorar la complejidad de estos datos, identificar patrones subyacentes y obtener información valiosa para la toma de decisiones.
+El objetivo principal de este estudio es contribuir al conocimiento científico existente sobre el COVID-19 en México, a través del análisis de una amplia gama de variables relacionadas con la enfermedad. Estas variables pueden incluir datos demográficos, tasas de infección, hospitalizaciones, mortalidad, distribución geográfica de los casos, medidas de control implementadas y otros factores relevantes. La combinación de técnicas avanzadas de análisis de datos nos permitirá explorar la complejidad de estos datos, identificar patrones subyacentes y obtener información valiosa para la toma de decisiones.
 
 El uso de K-means nos permitirá realizar agrupaciones de los datos, lo que facilitará la identificación de patrones similares entre diferentes grupos de casos. El autoencoder, por otro lado, nos brindará una forma de reducir la dimensionalidad de los datos, extrayendo características clave y revelando patrones más complejos y sutiles. Además, el análisis de componentes principales (PCA) nos ayudará a comprender la estructura de los datos, identificar las variables más influyentes y examinar las relaciones entre ellas.
 
-Al obtener una visión más profunda de los datos del Covid-19 en México, podremos comprender mejor los factores que contribuyen a la propagación de la enfermedad, la eficacia de las medidas de control y las disparidades en la afectación de diferentes grupos de población. Esto, a su vez, permitirá a los responsables de la salud pública y a los tomadores de decisiones implementar estrategias más efectivas y basadas en evidencia para contener el virus y proteger a la población.
+Al obtener una visión más profunda de los datos del COVID-19 en México, podremos comprender mejor los factores que contribuyen a la propagación de la enfermedad, la eficacia de las medidas de control y las disparidades en la afectación de diferentes grupos de población. Esto, a su vez, permitirá a los responsables de la salud pública y a los tomadores de decisiones implementar estrategias más efectivas y basadas en evidencia para contener el virus y proteger a la población.
 
-En conclusión, este artículo científico se enfoca en el análisis de información del Covid-19 en México utilizando técnicas como K-means, autoencoder y PCA. La combinación de estas herramientas avanzadas nos permitirá identificar patrones ocultos en los datos, proporcionando conocimientos esenciales para el manejo de la pandemia. A través de este estudio, esperamos contribuir al avance de la investigación en salud pública y proporcionar información relevante para la toma de decisiones en la lucha contra el Covid-19 en México y en todo el mundo.
+En conclusión, este artículo científico se enfoca en el análisis de información del COVID-19 en México utilizando técnicas como K-means, autoencoder y PCA. La combinación de estas herramientas avanzadas nos permitirá identificar patrones ocultos en los datos, proporcionando conocimientos esenciales para el manejo de la pandemia. A través de este estudio, esperamos contribuir al avance de la investigación en salud pública y proporcionar información relevante para la toma de decisiones en la lucha contra el COVID-19 en México y en todo el mundo.
 
 \section{Trabajo Relacionados}
  los autores revisan los métodos más relevantes para el analisis de datos, incluyen , la superresolución y la mejora de imagen. A continuación, se resumen algunos de los métodos mencionados:
- 
- 
+
+
 \begin{itemize}[label=-]
     \item Para la eliminación de ruido, como los basados en transformaciones de coeficientes y promedio de píxeles vecinos \cite{zhang2017beyond}. Además, se han propuesto enfoques basados en redes neuronales convolucionales profundas para esta tarea, como DnCNN \cite{zhang2017beyond} y RED30 \cite{mao2019red30}. Estos métodos utilizan arquitecturas profundas para aprender a eliminar el ruido de las imágenes a partir del conjunto de entrenamiento y generar imágenes limpias a partir de nuevas imágenes o imágenes dañadas por el ruido. Los resultados experimentales muestran que estos métodos pueden superar a los métodos clásicos en términos tanto visuales como cuantitativos.
     \item Para la superresolución, algunos de los métodos mencionados son bicubic interpolation, que es el método más comúnmente utilizado para generar imágenes de alta resolución a partir de imágenes de baja resolución, y enfoques basados en redes neuronales convolucionales profundas como VDSR \cite{vdsr}, DRCN \cite{kim2016deeply} y SRCNN \cite{dong2016image}. Estos métodos utilizan arquitecturas profundas para aprender a generar imágenes de alta resolución a partir del conjunto de entrenamiento y mejorar la calidad visual y cuantitativa de las imágenes generadas. Los resultados experimentales muestran que estos métodos pueden superar a los métodos clásicos como bicubic interpolation en términos tanto visuales como cuantitativos.
@@ -120,7 +119,7 @@ En conclusión, este artículo científico se enfoca en el análisis de informac
 
 Los autores también destacan que muchos de estos métodos están diseñados para una tarea específica y no son fácilmente adaptables a otras tareas. Por lo tanto, proponen MIRNet como un modelo unificado que puede manejar múltiples tareas de procesamiento de imágenes de bajo nivel con un rendimiento estado del arte.
 
- 
+
 Se describe la arquitectura utilizada en el modelo propuesto. El modelo utiliza una arquitectura de red neuronal profunda basada en bloques residuales (ResNet) y se ha modificado para incluir módulos de atención y conexiones de salto (skip connections) para mejorar su rendimiento. Los bloques residuales permiten que el modelo sea muy profundo sin sufrir problemas de gradiente, mientras que los módulos de atención mejoran la capacidad del modelo para enfocarse en características importantes de la imagen como se muestra en la figura~\ref{fig:arquitectura}. Las conexiones de salto permiten que el modelo utilice información de diferentes niveles de resolución para mejorar la calidad de las imágenes generadas. Además, se realizan experimentos ablativos para analizar el impacto de cada uno de estos componentes en el rendimiento general del modelo, y se encuentra que las conexiones de salto son especialmente importantes para lograr un buen rendimiento. En general, la arquitectura propuesta logra resultados estatales del arte en varias tareas de procesamiento de imágenes, incluyendo denoising, super-resolución y mejora de imágenes.
 
 \section{Método propuesto}
