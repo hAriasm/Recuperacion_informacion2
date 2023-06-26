@@ -107,20 +107,24 @@ Al obtener una visión más profunda de los datos del COVID-19 en México, podre
 En conclusión, este artículo científico se enfoca en el análisis de información del COVID-19 en México utilizando técnicas como K-means, autoencoder y PCA. La combinación de estas herramientas avanzadas nos permitirá identificar patrones ocultos en los datos, proporcionando conocimientos esenciales para el manejo de la pandemia. A través de este estudio, esperamos contribuir al avance de la investigación en salud pública y proporcionar información relevante para la toma de decisiones en la lucha contra el COVID-19 en México y en todo el mundo.
 
 \section{Trabajo Relacionados}
- los autores revisan los métodos más relevantes para el analisis de datos, incluyen , la superresolución y la mejora de imagen. A continuación, se resumen algunos de los métodos mencionados:
+ Los autores revisan los métodos más relevantes para el análisis de datos, incluyen reducción de dimensionalidad,  A continuación, se resumen algunos de los métodos mencionados:
+
+ El artículo \cite{Parra2020} analiza los factores de riesgo asociados con la mortalidad en pacientes con COVID-19 en México. Se encontró que la edad, el sexo y las comorbilidades como la diabetes, la obesidad y la hipertensión aumentan significativamente el riesgo de muerte. Además, las enfermedades menos frecuentes como la enfermedad pulmonar obstructiva crónica, la enfermedad renal crónica y las condiciones de inmunosupresión también aumentan el riesgo de muerte. La hospitalización y la neumonía también se identificaron como factores de riesgo significativos. El estudio destaca la importancia de comprender los factores de riesgo asociados con COVID-19 para prevenir y manejar mejor la propagación del virus.
+
+ En el artículo \cite{Dash2022}, se utiliza el algoritmo de clustering K-means para segmentar a los clientes de un banco en función de sus hábitos de uso de tarjetas de crédito. El objetivo es ayudar al banco a ejecutar campañas de marketing efectivas dirigidas a clientes específicos. El artículo menciona que el número óptimo de clusters se puede determinar utilizando el método de la curva del codo y que la visualización y el preprocesamiento de datos son pasos importantes en el desarrollo del modelo. También se menciona que la arquitectura del autoencoder se puede utilizar para reducir el número de clusters y mejorar la precisión del modelo.
 
 
-\begin{itemize}[label=-]
-    \item Para la eliminación de ruido, como los basados en transformaciones de coeficientes y promedio de píxeles vecinos \cite{zhang2017beyond}. Además, se han propuesto enfoques basados en redes neuronales convolucionales profundas para esta tarea, como DnCNN \cite{zhang2017beyond} y RED30 \cite{mao2019red30}. Estos métodos utilizan arquitecturas profundas para aprender a eliminar el ruido de las imágenes a partir del conjunto de entrenamiento y generar imágenes limpias a partir de nuevas imágenes o imágenes dañadas por el ruido. Los resultados experimentales muestran que estos métodos pueden superar a los métodos clásicos en términos tanto visuales como cuantitativos.
-    \item Para la superresolución, algunos de los métodos mencionados son bicubic interpolation, que es el método más comúnmente utilizado para generar imágenes de alta resolución a partir de imágenes de baja resolución, y enfoques basados en redes neuronales convolucionales profundas como VDSR \cite{vdsr}, DRCN \cite{kim2016deeply} y SRCNN \cite{dong2016image}. Estos métodos utilizan arquitecturas profundas para aprender a generar imágenes de alta resolución a partir del conjunto de entrenamiento y mejorar la calidad visual y cuantitativa de las imágenes generadas. Los resultados experimentales muestran que estos métodos pueden superar a los métodos clásicos como bicubic interpolation en términos tanto visuales como cuantitativos.
-    \item Para la mejora de imagen,  algunos de los métodos mencionados son MemNet \cite{tai2017memnet} y FFDNet \cite{zhang2018ffdnet}, que son enfoques basados en redes neuronales convolucionales profundas que procesan características a su resolución original y fusionan información contextual de múltiples ramas paralelas. Además, se menciona el conjunto de datos MIT-Adobe FiveK \cite{dabov2007image}, que contiene imágenes de diversas escenas interiores y exteriores capturadas con cámaras DSLR en diferentes condiciones de iluminación, y se han utilizado las imágenes mejoradas por expertos como referencia para evaluar el rendimiento de los algoritmos. Los resultados experimentales muestran que los métodos basados en redes neuronales convolucionales profundas pueden mejorar significativamente la calidad visual y cuantitativa de las imágenes en comparación con los métodos clásicos.
-\end{itemize}
+En el estudio \cite{Gohari2022} utilizó un enfoque de clustering para identificar diferentes patrones en las tasas de incidencia y mortalidad de COVID-19 en 206 países. Los autores calcularon 27 medidas resumen para cada trayectoria, utilizaron análisis factorial para capturar correlaciones entre las medidas y aplicaron un algoritmo K-means para agrupar las trayectorias. Encontraron tres patrones diferentes tanto para las tasas de incidencia como de mortalidad, y la variación parecía estar más relacionada con las políticas de salud gubernamentales que con la distribución geográfica. El estudio proporciona información importante para los responsables políticos e investigadores para comprender los patrones epidemiológicos y comportamientos de COVID-19 en las sociedades.
+
+El artículo \cite{Chaudhary2021} analiza el impacto del COVID-19 en un conjunto de datos a nivel de país utilizando técnicas de aprendizaje automático no supervisado. Los autores utilizan el Análisis de Componentes Principales (PCA) para reducir la dimensionalidad del conjunto de datos e identificar variables significativas, y luego aplican el enfoque de agrupamiento K-means para detectar estructuras de comunidad ocultas entre los países. Los resultados muestran que las comunidades logradas después de aplicar PCA son más precisas que las logradas sin ella. El artículo sugiere que el uso de PCA puede mejorar la identificación de comunidades y ser útil para investigadores, científicos, sociólogos, responsables políticos y gerentes del sector de la salud.
 
 
-Los autores también destacan que muchos de estos métodos están diseñados para una tarea específica y no son fácilmente adaptables a otras tareas. Por lo tanto, proponen MIRNet como un modelo unificado que puede manejar múltiples tareas de procesamiento de imágenes de bajo nivel con un rendimiento estado del arte.
+\section{Preprocesamiento}
+Algunas de las características fue la eliminación
 
 
-Se describe la arquitectura utilizada en el modelo propuesto. El modelo utiliza una arquitectura de red neuronal profunda basada en bloques residuales (ResNet) y se ha modificado para incluir módulos de atención y conexiones de salto (skip connections) para mejorar su rendimiento. Los bloques residuales permiten que el modelo sea muy profundo sin sufrir problemas de gradiente, mientras que los módulos de atención mejoran la capacidad del modelo para enfocarse en características importantes de la imagen como se muestra en la figura~\ref{fig:arquitectura}. Las conexiones de salto permiten que el modelo utilice información de diferentes niveles de resolución para mejorar la calidad de las imágenes generadas. Además, se realizan experimentos ablativos para analizar el impacto de cada uno de estos componentes en el rendimiento general del modelo, y se encuentra que las conexiones de salto son especialmente importantes para lograr un buen rendimiento. En general, la arquitectura propuesta logra resultados estatales del arte en varias tareas de procesamiento de imágenes, incluyendo denoising, super-resolución y mejora de imágenes.
+
+
 
 \section{Método propuesto}
 La restauración y mejora de imágenes es un problema importante en muchas aplicaciones prácticas, como la fotografía digital, la medicina y la vigilancia por video \cite{zhang2017beyond}. En este articulo, se presenta una nueva técnica basada en redes neuronales convolucionales (CNN) para abordar este problema, en la figura ~\ref{fig:ejem_Entrenamiento}. El método propuesto se llama MIRNet (Red Mejorada de Restauración de Imágenes) y utiliza bloques residuales de múltiples escalas para mantener las características de alta resolución a lo largo de la jerarquía de la red \cite{tian2020learning}.
@@ -225,39 +229,13 @@ Es importante tener en cuenta que el tiempo de ejecución del método dependerá
    \label{tab:impacto}
 \end{table}
 
-\begin{table}[!hbt]
-   \centering
-   \caption{Agregación de características. Nuestro SKFF usa 6 veces menos parámetros que concat, pero genera mejores resultados.}
-   \begin{tabular}{lccccc}
-        \toprule
-            Metodo              &Sum    &Concat     &SKFF   \\
-        \midrule
-           PSNR (in dB)         &30.76   &30.89     &31.16      \\
-           Parametros           &0       &12,288    &2,049        \\
-       \bottomrule
-   \end{tabular}
-   \label{tab:agregacion}
-\end{table}
 
-\begin{table*}[hbt]
-   \centering
-   \caption{Estudio de ablación en diferentes diseños de BMR. Las filas indican la cantidad de flujos de resolución paralelos y las columnas representan la cantidad de columnas que contienen DAU.}
-    \begin{tabular}{lccccccccc}
-        \toprule
-        &&Rows = 1&&&Rows = 2&&&Rows = 3&\\
-        &Cols = 1 &Cols = 2 &Cols = 3 &Cols = 1 &Cols = 2 &Cols = 3 &Cols = 1 &Cols = 2 &Cols = 3\\
-        \midrule
-        PSNR &29.92 &30.11 &30.17 &30.15 &30.83 &30.92 &30.24 &31.16 &31.18\\
-        \bottomrule
-    \end{tabular}
-   \label{tab:ablation}
-\end{table*}
 
 Estudiamos el impacto de cada uno de nuestros componentes arquitectónicos y opciones de diseño en el desempeño final. La sección de estudios de ablación incluye varias tablas que resumen los resultados de los experimentos realizados. El cuadro ~\ref{tab:impacto} muestra el impacto de cada componente individual del modelo MRB en la tarea de superresolución. Los resultados indican que las conexiones "skip" son el componente más importante para el rendimiento, ya que su eliminación causa la mayor disminución en la PSNR. El cuadro ~\ref{tab:agregacion} compara el método propuesto SKFF con otros métodos de agregación de características y muestra que SKFF utiliza menos parámetros pero produce mejores resultados. Finalmente, el cuadro ~\ref{tab:ablation} presenta un estudio de ablación sobre diferentes diseños de MRB, donde se varía el número de corrientes paralelas y columnas que contienen DAUs. Los resultados muestran que aumentar el número de corrientes paralelas y columnas puede mejorar el rendimiento del modelo en la tarea de superresolución. En general, estas tablas proporcionan información valiosa sobre cómo cada componente del modelo contribuye al rendimiento general y pueden ayudar a guiar futuras mejoras en la arquitectura del modelo.
 
 \section{CONCLUSIÓN}
 
-En este estudio, se realizó una revisión exhaustiva de los métodos de aprendizaje profundo para la eliminación de ruido en imágenes. Se discutieron los enfoques más populares y se compararon sus fortalezas y debilidades.
+En este estudio, se realizó una revisión exhaustiva de los métodos de aprendizaje, para la eliminación dedimensionalidad. Usando PCA y luego usar Kmeas y .
 
 Se concluyó que los métodos basados en redes neuronales convolucionales (CNN) son los más efectivos para la eliminación de ruido en imágenes \cite{zhang2017beyond, lehtinen2018noise2noise, tai2017image}. Además, se encontró que el uso de arquitecturas profundas y técnicas de entrenamiento avanzadas, como la normalización por lotes y la regularización, puede mejorar significativamente el rendimiento del modelo \cite{lefkimmiatis2018universal}. Sin embargo, aún hay desafíos importantes en este campo. Por ejemplo, la eliminación de ruido en imágenes con texturas finas y detalles complejos sigue siendo un problema difícil. Además, muchos métodos existentes requieren grandes cantidades de datos etiquetados para el entrenamiento del modelo, lo que puede ser costoso y limitar su aplicabilidad en situaciones donde los datos son escasos.
 
@@ -274,80 +252,27 @@ En cuanto a trabajos futuros, se pueden explorar nuevas arquitecturas de red y t
 	{
 	\begin{thebibliography}{20} % Use for 1-9 references
 	    \bibitem{Li2020}
-        Li, X., Xu, S., Yu, M., Wang, K., Tao, Y., Zhou, Y., et al. (2020). Risk factors for severity and mortality in adult COVID-19 inpatients in Wuhan. \textit{Journal of Allergy and Clinical Immunology}, 22, 1650-1652. \url{https://doi.org/10.1093/ntr/ntaa059}.
+        Risk factors for severity and mortality in adult COVID-19 inpatients in Wuhan.Li, X., Xu, S., Yu, M., Wang, K., Tao, Y., Zhou, Y., et al. (2020).\textit{Journal of Allergy and Clinical Immunology}, 22, 1650-1652. \url{https://doi.org/10.1093/ntr/ntaa059}.
 
         \bibitem{Argoty2021}
-        Argoty-Pantoja, A. D., Robles-Rivera, K., Rivera-Paredez, B., $\&$  Salmerón, J. (2021). COVID-19 fatality in Mexico's indigenous populations. \textit{Public Health}, 193, 69-75. \url{https://doi.org/10.1016/j.puhe.2021.01.023}.
-
-        \bibitem{Argoty2021}
-        Argoty-Pantoja, A. D., Robles-Rivera, K., Rivera-Paredez, B., $\&$ Salmerón, J. (2021). COVID-19 fatality in Mexico's indigenous populations. \textit{Public health}, 193, 69–75. \url{https://doi.org/10.1016/j.puhe.2021.01.023}.
+        COVID-19 fatality in Mexico's indigenous populations. Argoty-Pantoja, A. D., Robles-Rivera, K., Rivera-Paredez, B., $\&$ Salmerón, J. (2021). \textit{Public health}, 193, 69–75. \url{https://doi.org/10.1016/j.puhe.2021.01.023}.
 
         \bibitem{Dash2022}
-        Dash, D., $\&$  Mishra, A. (2022). Credit Card Holders Segmentation Using K-mean Clustering with Autoencoder. En \textit{2022 International Conference on Advancements in Smart, Secure and Intelligent Computing (ASSIC)} (pp. 1-5). Bhubaneswar, India. \url{https://doi.org/10.1109/ASSIC55218.2022.10088368}.
+        Credit Card Holders Segmentation Using K-mean Clustering with Autoencoder. Dash, D., $\&$  Mishra, A. (2022).En \textit{2022 International Conference on Advancements in Smart, Secure and Intelligent Computing (ASSIC)} (pp. 1-5). Bhubaneswar, India. \url{https://doi.org/10.1109/ASSIC55218.2022.10088368}.
+
+        \bibitem{Parra2020}
+        Clinical characteristics and risk factors for mortality of patients with COVID-19 in a large data set from Mexico. Parra-Bracamonte, G. M., Lopez-Villalobos, N., $\&$ Parra-Bracamonte, F. E. (2020). \textit{Annals of Epidemiology}, 52, 93-98.e2. ISSN 1047-2797. \url{https://doi.org/10.1016/j.annepidem.2020.08.005}.
+
+
+        \bibitem{Gohari2022}
+        Clustering of countries according to the COVID-19 incidence and mortality rates.Gohari, K., Kazemnejad, A., Sheidaei, A., et al. (2022). \textit{BMC Public Health}, 22, 632. \url{https://doi.org/10.1186/s12889-022-13086-z}.
+
+
+        \bibitem{Chaudhary2021}
+        Community detection using unsupervised machine learning techniques on COVID-19 dataset.Chaudhary, L., $\&$ Singh, B. (2021). \textit{Social Network Analysis and Mining}, 11(28), 1-14. \url{https://doi.org/10.1007/s13278-021-00734-2}.
 
 
 
-	   \bibitem{tian2020learning}
-        Y. Tian, Y. Zhang, Y. Fu, and B. Ghanem, "Learning from scratch for low-level vision," \textit{arXiv preprint arXiv:2003.06792}, 2020.
-
-	
-        \bibitem{tai2017memnet}
-        Y. Tai, J. Yang and X. Liu, "MemNet: A persistent memory network for image restoration," in \emph{Proceedings of the IEEE International Conference on Computer Vision}, Venice, Italy, Oct.-Dec., 2017, pp. 4549-4557.
-
-        \bibitem{zhang2018ffdnet}
-        K. Zhang, W. Zuo and L. Zhang, "FFDNet: Toward a fast and flexible solution for CNN-based image denoising," \emph{IEEE Transactions on Image Processing}, vol. 27, no. 9, pp. 4608-4622, Sep., 2018.
-
-
-        \bibitem{mao2019red30}
-        Mao, X., Shen, C.,   Yang, Y.-B. (2019). RED30: A Deep Residual Encoder-Decoder Network for Image Restoration and Enhancement. IEEE Transactions on Image Processing, 28(12), 6237–6252.
-
-        \bibitem{vdsr}
-        Jiwon Kim, Jung Kwon Lee, and Kyoung Mu Lee.
-        Accurate image super-resolution using very deep convolutional networks.
-        {\em IEEE Transactions on Pattern Analysis and Machine Intelligence}, 38(2):295--307, 2016.
-
-        \bibitem{dong2016image}
-        Chao Dong, Chen Change Loy, Kaiming He, and Xiaoou Tang.
-        Image super-resolution using deep convolutional networks.
-        {\em IEEE Transactions on Pattern Analysis and Machine Intelligence}, 38(2):295--307, 2016.
-
-        \bibitem{kim2016deeply}
-        Jiwon Kim, Jung Kwon Lee, and Kyoung Mu Lee.
-        \newblock Deeply-recursive convolutional network for image super-resolution.
-        \newblock In {\em Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)}, pages 1637--1645, 2016.
-	
-        \bibitem{dabov2007image}
-        Kostadin Dabov, Alessandro Foi, Vladimir Katkovnik, and Karen Egiazarian.
-        \newblock Image denoising using sparse 3d transform-domain collaborative filtering.
-        \newblock {\em IEEE Transactions on Image Processing}, 16(8):2080--2095, 2007.
-
-        \bibitem{lehtinen2018noise2noise}
-        J. Lehtinen, J. Munkberg, J. Hasselgren, S. Laine, T. Karras, M. Aittala, and T. Aila,
-        ''Noise2Noise: Learning Image Restoration without Clean Data,''
-        in \emph{International Conference on Machine Learning}, 2018, pp. 2965--2974.
-
-        \bibitem{zhang2017beyond}
-        K. Zhang, W. Zuo, Y. Chen, D. Meng, and L. Zhang,
-        ''Beyond a Gaussian Denoiser: Residual Learning of Deep CNN for Image Denoising,''
-        \emph{IEEE Transactions on Image Processing}, vol. 26, no. 7, pp. 3142--3155, 2017.
-
-        \bibitem{lefkimmiatis2018universal}
-        S. Lefkimmiatis,
-        ''Universal Denoising Networks: A Novel CNN Architecture for Image Denoising,''
-        \emph{IEEE Transactions on Image Processing}, vol. 27, no. 2, pp. 919--933, 2018.
-
-        \bibitem{zhang2018learning}
-        K. Zhang, W. Zuo, Y. Chen, D. Meng, and L. Zhang,
-        ''Learning Deep CNN Denoiser Prior for Image Restoration,''
-        in \emph{IEEE Conference on Computer Vision and Pattern Recognition}, 2018, pp. 2808--2817.
-
-        \bibitem{tai2017image}
-        Y. Tai, J. Yang, and X. Liu,
-        ''Image Super-Resolution via Deep Recursive Residual Network,''
-        in \emph{IEEE Conference on Computer Vision and Pattern Recognition}, 2017, pp. 2790--2798.
-
-        \bibitem{dnd}
-        Plötz, T., Roth, S.: Dnd: A challenging noisy image dataset. In: Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition Workshops. pp. 81–88 (2017)
 	\end{thebibliography}
 } % end \ifboolexpr
 %
