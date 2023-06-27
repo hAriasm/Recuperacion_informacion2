@@ -119,9 +119,16 @@ En el estudio \cite{Gohari2022} utilizó un enfoque de clustering para identific
 El artículo \cite{Chaudhary2021} analiza el impacto del COVID-19 en un conjunto de datos a nivel de país utilizando técnicas de aprendizaje automático no supervisado. Los autores utilizan el Análisis de Componentes Principales (PCA) para reducir la dimensionalidad del conjunto de datos e identificar variables significativas, y luego aplican el enfoque de agrupamiento K-means para detectar estructuras de comunidad ocultas entre los países. Los resultados muestran que las comunidades logradas después de aplicar PCA son más precisas que las logradas sin ella. El artículo sugiere que el uso de PCA puede mejorar la identificación de comunidades y ser útil para investigadores, científicos, sociólogos, responsables políticos y gerentes del sector de la salud.
 
 
-\section{Preprocesamiento}
-Algunas de las características fue la eliminación
+\section{Preprocesamiento de información}
+Eliminamos algunos columnas: FECHA$\_$ACTUALIZACION, ID$\_$REGISTRO, ORIGEN, SECTOR, MUNICIPIO$\_$RES, ENTIDAD$\_$NAC,    NACIONALIDAD, MIGRANTE, FECHA$\_$INGRESO, FECHA$\_$SINTOMAS, FECHA$\_$DEF, HABLA$\_$LENGUA$\_$INDIG, TOMA$\_$MUESTRA$\_$LAB, TOMA$\_$MUESTRA$\_$ANTIGENO, RESULTADO$\_$LAB, RESULTADO$\_$ANTIGENO, PAIS$\_$NACIONALIDAD, PAIS$\_$ORIGEN, esas columnas no seran usadas en nuestro analisis de datos, ahora construimos nuestra maestriz de correlacion como se muestra en la figura  ~\ref{fig:matrix_correlacion}.
 
+
+\begin{figure}[!h]
+    \centering
+    \includegraphics*[width=.5\textwidth]{matrizdeCorrelacion} 
+    \caption{Ejemplo de ejecución de una imagen original hasta la imagen optimizada.}
+    \label{fig:matrix_correlacion}
+\end{figure}
 
 
 
