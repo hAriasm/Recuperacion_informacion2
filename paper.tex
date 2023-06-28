@@ -120,18 +120,15 @@ El artículo \cite{Chaudhary2021} analiza el impacto del COVID-19 en un conjunto
 
 
 \section{Preprocesamiento de información}
-Eliminamos algunos columnas: FECHA$\_$ACTUALIZACION, ID$\_$REGISTRO, ORIGEN, SECTOR, MUNICIPIO$\_$RES, ENTIDAD$\_$NAC,    NACIONALIDAD, MIGRANTE, FECHA$\_$INGRESO, FECHA$\_$SINTOMAS, FECHA$\_$DEF, HABLA$\_$LENGUA$\_$INDIG, TOMA$\_$MUESTRA$\_$LAB, TOMA$\_$MUESTRA$\_$ANTIGENO, RESULTADO$\_$LAB, RESULTADO$\_$ANTIGENO, PAIS$\_$NACIONALIDAD, PAIS$\_$ORIGEN, esas columnas no seran usadas en nuestro analisis de datos, ahora construimos nuestra maestriz de correlacion como se muestra en la figura  ~\ref{fig:matrix_correlacion}.
 
+El primer paso es eliminar columnas características que tiene poco valor significativo o son redundantes a nuestro objetivo estas columnas son la siguientes:   FECHA$\_$ACTUALIZACION, ID$\_$REGISTRO, ORIGEN, SECTOR, MUNICIPIO$\_$RES, ENTIDAD$\_$NAC,    NACIONALIDAD, MIGRANTE, FECHA$\_$INGRESO, FECHA$\_$SINTOMAS, FECHA$\_$DEF, HABLA$\_$LENGUA$\_$INDIG, TOMA$\_$MUESTRA$\_$LAB, TOMA$\_$MUESTRA$\_$ANTIGENO, RESULTADO$\_$LAB, RESULTADO$\_$ANTIGENO, PAIS$\_$NACIONALIDAD, PAIS$\_$ORIGEN, esas columnas no serán usadas en nuestro análisis de datos, ahora construimos nuestra matriz de correlación como se muestra en la figura  ~\ref{fig:matrix_correlacion}.
 
 \begin{figure}[!h]
     \centering
-    \includegraphics*[width=.5\textwidth]{matrizdeCorrelacion} 
+    \includegraphics*[width=.5\textwidth]{matrizdeCorrelacion}
     \caption{Ejemplo de ejecución de una imagen original hasta la imagen optimizada.}
     \label{fig:matrix_correlacion}
 \end{figure}
-
-
-
 
 \section{Método propuesto}
 La restauración y mejora de imágenes es un problema importante en muchas aplicaciones prácticas, como la fotografía digital, la medicina y la vigilancia por video \cite{zhang2017beyond}. En este articulo, se presenta una nueva técnica basada en redes neuronales convolucionales (CNN) para abordar este problema, en la figura ~\ref{fig:ejem_Entrenamiento}. El método propuesto se llama MIRNet (Red Mejorada de Restauración de Imágenes) y utiliza bloques residuales de múltiples escalas para mantener las características de alta resolución a lo largo de la jerarquía de la red \cite{tian2020learning}.
