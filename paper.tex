@@ -131,39 +131,7 @@ El primer paso es eliminar columnas características que tiene poco valor signif
 \end{figure}
 
 \section{Método propuesto}
-La restauración y mejora de imágenes es un problema importante en muchas aplicaciones prácticas, como la fotografía digital, la medicina y la vigilancia por video \cite{zhang2017beyond}. En este articulo, se presenta una nueva técnica basada en redes neuronales convolucionales (CNN) para abordar este problema, en la figura ~\ref{fig:ejem_Entrenamiento}. El método propuesto se llama MIRNet (Red Mejorada de Restauración de Imágenes) y utiliza bloques residuales de múltiples escalas para mantener las características de alta resolución a lo largo de la jerarquía de la red \cite{tian2020learning}.
-
-\textbf{Flujo general.} Dada una imagen $\mathbf{I} \in \mathbb{R}^{H \times W \times 3}$ la red primero aplica una capa convolucional para extraer características de bajo nivel $\mathbf{X}_{\textbf{0}} \in \mathbb{R}^{H \times W \times 3}$. A continuación, el mapa de features $\mathbf{X}_{\textbf{0}}$ pasa a través de un número $N$ de grupos recursivos residuales (RRGs), generando características profundas $\mathbf{X}_{\textbf{d}} \in \mathbb{R}^{H \times W \times 3}$. Nótese que cada RRG contiene algunos bloques residuales multi-escala. Luego de eso, se aplica una capa convolucional para profundizar características $\mathbf{X}_{\textbf{d}}$ y obtener una imagen residual $\mathbf{R} \in \mathbb{R}^{H \times W \times 3}$. Finalmente, la imagen restaurada se obtiene como $\mathbf{\hat{I}} = \mathbf{I} + \mathbf{R}$. La red propuesta se optimiza usando el método de pérdida de Charbonnier:
-\begin{equation*}
-\mathcal{L}(\mathbf{\hat{I}}, \mathbf{I^*}) = \sqrt{\lVert\mathbf{\hat{I}} - \mathbf{I^*}\rVert^2 + \varepsilon^2}
-\end{equation*}
-
-Donde $\mathbf{I^*}$ representa la imagen verdadera y $\varepsilon$ es una constante que empíricamente se establece en $10^{-3}$ para todos los experimentos.
-
-Durante el entrenamiento, el modelo se ajusta a los datos de entrenamiento para minimizar la función de pérdida. A medida que el modelo se entrena, es probable que mejore su capacidad para reconstruir imágenes de alta calidad y, por lo tanto, aumente su PSNR en el conjunto de entrenamiento.
-
-Sin embargo, es importante asegurarse de que el modelo no esté sobreajustando los datos de entrenamiento y pueda generalizar bien a nuevas imágenes. Por lo tanto, también es importante monitorear la evolución del PSNR en un conjunto de validación separado durante el entrenamiento. En la figura  ~\ref{fig:ll_train_losses_ep} se refiere a la evolución de la relación señal-ruido pico (PSNR) en el conjunto de entrenamiento y validación a medida que el modelo se entrena durante varias épocas.
-
-En general, esperamos ver una mejora gradual en el PSNR tanto en el conjunto de entrenamiento como en el conjunto de validación a medida que aumentan las épocas. Sin embargo, si vemos una brecha significativa entre los valores del PSNR en los conjuntos de entrenamiento y validación (es decir, si el modelo está sobreajustando), puede ser necesario ajustar los hiperparámetros o utilizar técnicas adicionales para regularizar el modelo.
-
-La clave del éxito del MIRNet es su capacidad para separar el contenido no deseado degradado del verdadero contenido espacialmente detallado. Esto se logra mediante el uso de grandes contextos que amplían el campo receptivo. Sin embargo, esto puede resultar en una pérdida de detalles espaciales precisos. Para abordar este problema, los autores proponen una nueva técnica que mantiene las características originales de alta resolución a lo largo de la jerarquía de la red \cite{tian2020learning}.
-
-
-El MIRNet también utiliza un mecanismo llamado "atención" para enfocarse en las regiones más importantes y reducir el ruido en las regiones menos importantes. Este mecanismo ayuda a mejorar aún más la calidad visual y perceptual del resultado final. Además, el MIRNet es capaz de manejar diferentes tipos de distorsiones, como el ruido, la borrosidad y la falta de detalles \cite{tian2020learning}.
-
-Los experimentos realizados en este articulo demuestran que el MIRNet supera a otros métodos de restauración de imágenes en términos de calidad visual y perceptual. Además, el MIRNet es capaz de restaurar imágenes con una mayor velocidad y eficiencia que otros métodos \cite{tian2020learning}.
-
-\begin{figure}[!h]
-    \centering
-    \includegraphics*[width=.5\textwidth]{ll-1}
-    \includegraphics*[width=.5\textwidth]{ll-2}
-    \includegraphics*[width=.5\textwidth]{ll-3}
-    \includegraphics*[width=.5\textwidth]{ll-4}
-    \includegraphics*[width=.5\textwidth]{ll-5}
-    \includegraphics*[width=.5\textwidth]{ll-6}
-    \caption{Ejemplo de ejecución de una imagen original hasta la imagen optimizada.}
-    \label{fig:ejem_procesamiento}
-\end{figure}
+ 
 
 \section{EXPERIMENTO}
 
@@ -184,15 +152,7 @@ Los detalles del entrenamiento y evaluación del modelo MIRNet para tres tareas 
   \item Evaluación: La evaluación del rendimiento del modelo puede ser difícil y subjetiva. Es posible que hayamos utilizado métricas inadecuadas o insuficientes para evaluar el rendimiento del modelo.
 \end{itemize}
 
-Para la tarea de eliminación de ruido, se utilizó el conjunto de datos DnD \cite{dnd}, que consta de 1,800 pares de imágenes con ruido y sin ruido. El modelo se entrenó utilizando el optimizador Adam durante 200 épocas con una tasa de aprendizaje inicial de $2x10^{-4}$. También se realizó un análisis ablativo para evaluar el impacto individual de cada componente arquitectónico en el rendimiento final del modelo.
-
-Para la tarea de superresolución, se utilizaron cuatro conjuntos diferentes: Set5, Set14, BSD100 y Urban100. El modelo se entrenó utilizando el optimizador Adam durante 400 épocas con una tasa de aprendizaje inicial de $2x10^{-4}$. También se realizó un análisis ablativo para evaluar el impacto individual del tamaño del parche y la profundidad en el rendimiento final del modelo.
-
-Para la tarea de mejora de imagen, se utilizaron tres conjuntos diferentes: PIRM2018-SR-track2-validation, PIRM2018-SR-track2-test y DIV2K. El modelo se entrenó utilizando el optimizador Adam durante 800 épocas con una tasa de aprendizaje inicial de $2x10^{-4}$.
-
-En general, los resultados experimentales muestran que MIRNet supera a otros métodos estatales del arte en las tres tareas de procesamiento de imágenes de bajo nivel. Además, el análisis ablativo revela que cada componente arquitectónico del modelo contribuye significativamente al rendimiento final.
-
-Para la ejecución primero se debe preparar la imagen de entrada. Esto puede incluir la eliminación de ruido o la reducción de la resolución si se desea aplicar una mejora de superresolución. Una vez que se ha preparado la imagen, se puede ingresar al modelo para su procesamiento. El modelo tomará la imagen como entrada y aplicará una serie de operaciones para realizar la tarea deseada, ya sea denoising, superresolución o mejora general de la imagen. El resultado final será una versión mejorada de la imagen original.
+ 
 
 \begin{figure}[!h]
     \centering
