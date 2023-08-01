@@ -83,7 +83,7 @@
 The combination of advanced data analysis techniques allow us to explore the complexity of the data, identify underlying patterns and obtain valuable information for decision making.
 The objective of this article is to segment the data associated with COVID-19 cases in Mexico in order to find demographic patterns in the patients who attended a care center.
 A comparison will be made between the influence of clustering proposals with dimensionality reduction and without dimensionality reduction on the segmentation of these patterns.
-Also, by gaining a deeper insight into the COVID-19 data, we will be able to better understand the factors that contributed to the spread of the disease, and the disparities across different population groups (indigenous and non-indigenous). 
+Also, by gaining a deeper insight into the COVID-19 data, we will be able to better understand the factors that contributed to the spread of the disease, and the disparities across different population groups (indigenous and non-indigenous).
 This article focuses on the analysis of information on Covid-19 in Mexico using techniques such as K-means, autoencoder and PCA.
 \end{abstract}
 
@@ -117,10 +117,19 @@ En el estudio \cite{Gohari2022} utilizó un enfoque de clustering para identific
 
 El artículo \cite{Chaudhary2021} analiza el impacto del COVID-19 en un conjunto de datos a nivel de país utilizando técnicas de aprendizaje automático no supervisado. Los autores utilizan el Análisis de Componentes Principales (PCA) para reducir la dimensionalidad del conjunto de datos e identificar variables significativas, y luego aplican el enfoque de agrupamiento K-means para detectar estructuras de comunidad ocultas entre los países. Los resultados muestran que las comunidades logradas después de aplicar PCA son más precisas que las logradas sin ella. El artículo sugiere que el uso de PCA puede mejorar la identificación de comunidades y ser útil para investigadores, científicos, sociólogos, responsables políticos y gerentes del sector de la salud.
 
+\section{Overview}
 
 \section{Preprocesamiento de información}
 
 El primer paso es eliminar columnas características que tiene poco valor significativo o son redundantes a nuestro objetivo estas columnas son la siguientes:   FECHA$\_$ACTUALIZACION, ID$\_$REGISTRO, ORIGEN, SECTOR, MUNICIPIO$\_$RES, ENTIDAD$\_$NAC,    NACIONALIDAD, MIGRANTE, FECHA$\_$INGRESO, FECHA$\_$SINTOMAS, FECHA$\_$DEF, HABLA$\_$LENGUA$\_$INDIG, TOMA$\_$MUESTRA$\_$LAB, TOMA$\_$MUESTRA$\_$ANTIGENO, RESULTADO$\_$LAB, RESULTADO$\_$ANTIGENO, PAIS$\_$NACIONALIDAD, PAIS$\_$ORIGEN, esas columnas no serán usadas en nuestro análisis de datos, ahora construimos nuestra matriz de correlación como se muestra en la figura  ~\ref{fig:matrix_correlacion}.
+
+\subsection{Nomenclatura}
+
+\begin{itemize}[label=--]
+\item \emph{Entidad_UM} es la entidad donde se ubica la Unidad Médica de atención.
+\item \emph{Entidad_RES} es la entidad de residencia del paciente.
+\item \emph{EPOC} identifica si el paciente tiene un diagnóstico de EPOC (Enfermedad Pulmonar Obstructiva Crónica). 
+\end{itemize}
 
 \begin{figure}[!h]
     \centering
