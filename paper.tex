@@ -120,13 +120,17 @@ El artículo \cite{Chaudhary2021} analiza el impacto del COVID-19 en un conjunto
 \section{Overview}
 
 \section{Preprocesamiento de información}
-El conjunto de datos obtenido de la página de Datos Abiertos del Gobierno de México abarca casos de COVID-19 desde el 01 de enero de 2022 hasta el 16 de mayo de 2023. Los casos reportados contemplan casos sospechosos, negativos y positivos. El presente trabajo se basará únicamente en los casos confirmados. Para ello, el primer paso es eliminar columnas con características que tienen poco valor significativo o son redundantes a nuestro objetivo; estas columnas son la siguientes: FECHA$\_$ACTUALIZACION, ID$\_$REGISTRO, ORIGEN, SECTOR, MUNICIPIO$\_$RES, ENTIDAD$\_$NAC, NACIONALIDAD, MIGRANTE, FECHA$\_$INGRESO, FECHA$\_$SINTOMAS, FECHA$\_$DEF, HABLA$\_$LENGUA$\_$INDIG, TOMA$\_$MUESTRA$\_$LAB, TOMA$\_$MUESTRA$\_$ANTIGENO, RESULTADO$\_$LAB, RESULTADO$\_$ANTIGENO, PAIS$\_$NACIONALIDAD, PAIS$\_$ORIGEN; estas columnas no serán usadas en nuestro análisis de datos, ahora construimos nuestra matriz de correlación como se muestra en la figura  ~\ref{fig:matrix_correlacion}.
+El conjunto de datos obtenido de la página de Datos Abiertos del Gobierno de México abarca casos de COVID-19 desde el 01 de enero de 2022 hasta el 16 de mayo de 2023. Los casos reportados contemplan casos sospechosos, negativos y positivos. El presente trabajo se basará únicamente en los casos confirmados. Para ello, el primer paso es eliminar columnas con características que tienen poco valor significativo o son redundantes a nuestro objetivo; estas columnas son la siguientes: FECHA$\_$ACTUALIZACION, ID$\_$REGISTRO, ORIGEN, SECTOR, MUNICIPIO$\_$RES, ENTIDAD$\_$NAC, NACIONALIDAD, MIGRANTE, FECHA$\_$INGRESO, FECHA$\_$SINTOMAS, FECHA$\_$DEF, HABLA$\_$LENGUA$\_$INDIG, TOMA$\_$MUESTRA$\_$LAB, TOMA$\_$MUESTRA$\_$ANTIGENO, RESULTADO$\_$LAB, RESULTADO$\_$ANTIGENO, PAIS$\_$NACIONALIDAD, PAIS$\_$ORIGEN; estas columnas no serán usadas en nuestro análisis de datos. 
+
+Con respecto a los datos de columnas de tipo SÍ o NO, éstas tienen valores 1 (SÍ)  y 2 (NO), pero los valores de "no aplica", "se ignora" y "no especificado" tienen valores 97, 98 y 99 respectivamente. Estos valores se reemplazaron por valores negativos o 3, según el caso; esto con la finalidad de no generar mucha desviación en cada registro. 
+
+ahora construimos nuestra matriz de correlación como se muestra en la figura  ~\ref{fig:matrix_correlacion}.
 
 \subsection{Nomenclatura}
 
 \begin{itemize}[label=--]
-\item \emph{Entidad_UM} es la entidad donde se ubica la Unidad Médica de atención.
-\item \emph{Entidad_RES} es la entidad de residencia del paciente.
+\item \emph{Entida UM} es la entidad donde se ubica la Unidad Médica de atención.
+\item \emph{Entidad RES} es la entidad de residencia del paciente.
 \item \emph{EPOC} identifica si el paciente tiene un diagnóstico de EPOC (Enfermedad Pulmonar Obstructiva Crónica).
 \end{itemize}
 
