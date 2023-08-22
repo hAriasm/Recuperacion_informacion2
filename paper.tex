@@ -70,11 +70,12 @@
 
 \begin{document}
 
-\title{Analisis de personas Indigenas que llegaron a UCI}
+\title{Análisis de datos demográficos de pacientes diagnosticados con COVID-19 en la población de México}
 
-\author{Fredy A. Huanca T.\thanks{Universidad Nacional San Agustín de Arequipa, fhuancat@unsa.edu.pe},
-		Jose E. Perez M.\thanks{Universidad Nacional San Agustín de Arequipa, jperezma@unsa.edu.pe} y
-		Henrry I. Arias M.\thanks{Universidad Nacional San Agustín de Arequipa, hariasm@unsa.edu.pe}}
+\author{Henrry I. Arias M.\thanks{Universidad Nacional San Agustín de Arequipa, hariasm@unsa.edu.pe},
+		Jose E. Perez M.\thanks{Universidad Nacional San Agustín de Arequipa, jperezma@unsa.edu.pe} y 
+        Fredy A. Huanca T.\thanks{Universidad Nacional San Agustín de Arequipa, fhuancat@unsa.edu.pe} 
+		}
 	
 \maketitle
 
@@ -91,7 +92,7 @@ This article focuses on the analysis of information on Covid-19 in Mexico using 
 COVID-19, Mexico, analysis of data, segmentation, patterns, autoencoder, dimensionality reduction, PCA.
 \end{keywords}
 
-\section{Introducción}
+\section{1 Introducción}
 
 El Covid-19, causado por el virus SARS-CoV-2, ha generado una crisis sanitaria global sin precedentes. Desde su aparición en diciembre de 2019, la enfermedad se ha propagado rápidamente en todo el mundo, afectando a millones de personas y causando un impacto significativo en la salud pública, la economía y la sociedad en general. México no ha sido ajeno a esta situación, enfrentando desafíos importantes en la contención y control del virus.
 
@@ -105,7 +106,7 @@ Al obtener una visión más profunda de los datos del COVID-19 en México, podre
 
 En conclusión, este artículo científico se enfoca en el análisis de información del COVID-19 en México utilizando técnicas como K-means, autoencoder y PCA. La combinación de estas herramientas avanzadas nos permitirá identificar patrones ocultos en los datos, proporcionando conocimientos esenciales para el manejo de la pandemia. A través de este estudio, esperamos contribuir al avance de la investigación en salud pública y proporcionar información relevante para la toma de decisiones en la lucha contra el COVID-19 en México y en todo el mundo.
 
-\section{Trabajo Relacionados}
+\section{2 Trabajo Relacionados}
  Los autores revisan los métodos más relevantes para el análisis de datos, incluyen reducción de dimensionalidad,  A continuación, se resumen algunos de los métodos mencionados:
 
  El artículo \cite{Parra2020} analiza los factores de riesgo asociados con la mortalidad en pacientes con COVID-19 en México. Se encontró que la edad, el sexo y las comorbilidades como la diabetes, la obesidad y la hipertensión aumentan significativamente el riesgo de muerte. Además, las enfermedades menos frecuentes como la enfermedad pulmonar obstructiva crónica, la enfermedad renal crónica y las condiciones de inmunosupresión también aumentan el riesgo de muerte. La hospitalización y la neumonía también se identificaron como factores de riesgo significativos. El estudio destaca la importancia de comprender los factores de riesgo asociados con COVID-19 para prevenir y manejar mejor la propagación del virus.
@@ -117,34 +118,53 @@ En el estudio \cite{Gohari2022} utilizó un enfoque de clustering para identific
 
 El artículo \cite{Chaudhary2021} analiza el impacto del COVID-19 en un conjunto de datos a nivel de país utilizando técnicas de aprendizaje automático no supervisado. Los autores utilizan el Análisis de Componentes Principales (PCA) para reducir la dimensionalidad del conjunto de datos e identificar variables significativas, y luego aplican el enfoque de agrupamiento K-means para detectar estructuras de comunidad ocultas entre los países. Los resultados muestran que las comunidades logradas después de aplicar PCA son más precisas que las logradas sin ella. El artículo sugiere que el uso de PCA puede mejorar la identificación de comunidades y ser útil para investigadores, científicos, sociólogos, responsables políticos y gerentes del sector de la salud.
 
-\section{Overview}
+\section{3 Overview}
 
-\section{Preprocesamiento de información}
-El conjunto de datos obtenido de la página de Datos Abiertos del Gobierno de México abarca casos de COVID-19 desde el 01 de enero de 2022 hasta el 16 de mayo de 2023. Los casos reportados contemplan casos sospechosos, negativos y positivos. El presente trabajo se basará únicamente en los casos confirmados. Para ello, el primer paso es eliminar columnas con características que tienen poco valor significativo o son redundantes a nuestro objetivo; estas columnas son la siguientes: FECHA$\_$ACTUALIZACION, ID$\_$REGISTRO, ORIGEN, SECTOR, MUNICIPIO$\_$RES, ENTIDAD$\_$NAC, NACIONALIDAD, MIGRANTE, FECHA$\_$INGRESO, FECHA$\_$SINTOMAS, FECHA$\_$DEF, HABLA$\_$LENGUA$\_$INDIG, TOMA$\_$MUESTRA$\_$LAB, TOMA$\_$MUESTRA$\_$ANTIGENO, RESULTADO$\_$LAB, RESULTADO$\_$ANTIGENO, PAIS$\_$NACIONALIDAD, PAIS$\_$ORIGEN; estas columnas no serán usadas en nuestro análisis de datos. 
+\section{4 Análisis de Tareas}
 
-Con respecto a los datos de columnas de tipo SÍ o NO, éstas tienen valores 1 (SÍ)  y 2 (NO), pero los valores de "no aplica", "se ignora" y "no especificado" tienen valores 97, 98 y 99 respectivamente. Estos valores se reemplazaron por valores negativos o 3, según el caso; esto con la finalidad de no generar mucha desviación en cada registro. 
+\subsection{Descripción de los datos y preprocesamiento}
+El conjunto de datos obtenido de la página de \emph{Datos Abiertos del Gobierno de México} abarca casos de COVID-19 reportados entre el 01 de enero de 2022 y el 16 de mayo de 2023. Los casos reportados contemplan casos sospechosos, negativos y positivos. El presente trabajo se basará únicamente en los casos confirmados; para ello, el primer paso es eliminar columnas con características que tienen poco valor significativo o son redundantes a nuestro objetivo; estas columnas son la siguientes: FECHA\_ACTUALIZACION, ID\_REGISTRO, ORIGEN, SECTOR, MUNICIPIO\_RES, ENTIDAD\_NAC, NACIONALIDAD, MIGRANTE, FECHA\_INGRESO, FECHA\_SINTOMAS, FECHA\_DEF, HABLA\_LENGUA\_INDIG, TOMA\_MUESTRA\_LAB, TOMA\_MUESTRA\_ANTIGENO, RESULTADO\_LAB, RESULTADO\_ANTIGENO, PAIS\_NACIONALIDAD, PAIS\_ORIGEN; estas columnas no serán usadas en nuestro análisis de datos.
 
-ahora construimos nuestra matriz de correlación como se muestra en la figura  ~\ref{fig:matrix_correlacion}.
+Con respecto a los datos de columnas de tipo SÍ o NO, éstas tienen valores 1 (SÍ)  y 2 (NO), pero los valores de ``no aplica'', ``se ignora'' y ``no especificado'' tienen valores 97, 98 y 99 respectivamente. Estos valores se reemplazaron por valores negativos o 3, según el caso; esto con la finalidad de no generar mucha desviación en cada registro.
 
 \subsection{Nomenclatura}
 
 \begin{itemize}[label=--]
-\item \emph{Entida UM} es la entidad donde se ubica la Unidad Médica de atención.
-\item \emph{Entidad RES} es la entidad de residencia del paciente.
+\item \emph{CLASIFICACION\_FINAL} identifica los casos confirmados de COVID-19 (valores del 1 al 3, en caso contrario son valores negativos o inválidos).
+\item \emph{ENTIDAD\_UM} es la entidad donde se ubica la Unidad Médica de atención.
+\item \emph{ENTIDAD\_RES} es la entidad de residencia del paciente.
 \item \emph{EPOC} identifica si el paciente tiene un diagnóstico de EPOC (Enfermedad Pulmonar Obstructiva Crónica).
+\item \emph{MORTALIDAD\_DIAS} contabiliza los días transcurridos desde el diagnóstico hasta el fallecimiento del paciente. 
+\item \emph{OTRO\_CASO} indica si el paciente tuvo contacto con algún otro caso diagnosticado con COVID-19.
+\item \emph{OTRAS\_COM} identifica si el paciente tiene un diagnóstico de otras enfermedades.
+\item \emph{TIPO\_PACIENTE} identifica el tipo de atención que recibió el paciente, ambulatorio si regresó a su casa u hospitalizado si ingresó a hospitalización.
+
 \end{itemize}
+
+\subsection{Visualización de los datos}
+Utilizaremos una matriz de correlación para un análisis multivariable. El resultado se muestra en la figura ~\ref{fig:matrix_correlacion}.
 
 \begin{figure}[!h]
     \centering
-    \includegraphics*[width=.5\textwidth]{matrizdeCorrelacion}
-    \caption{Ejemplo de ejecución de una imagen original hasta la imagen optimizada.}
+    \includegraphics*[width=.5\textwidth]{matriz-correlacion}
+    \caption{Matriz de correlación para los datos de COVID-19}
     \label{fig:matrix_correlacion}
 \end{figure}
 
-\section{Método propuesto}
+\begin{figure}[!h]
+    \centering
+    \includegraphics*[width=.5\textwidth]{codo}
+    \caption{Aplicación del método del codo (\emph{Elbow}) para determinar el número óptimo de clusters}.
+    \label{fig:metodo-codo}
+\end{figure}
 
+\section{5 Metodología}
 
-\section{EXPERIMENTO}
+\section{6 Casos de Estudio}
+
+\section{7 Discusión}
+
+\section{8 Conclusiones}
 
 
 \begin{figure*}[!h]
